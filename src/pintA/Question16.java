@@ -18,32 +18,61 @@ M：1 0 X 9 8 7 6 5 4 3 2
 public class Question16 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int N;
-        N = input.nextInt();
-        String []arr = new String[N];
+        int[] value=new int[]{7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
+        char[] M=new char[]{'1','0','X','9','8','7','6','5','4','3','2'};
+        int N  =input.nextInt();
+        Boolean print = true;
+        String[] arr  = new String[N];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = input.next();
-        }
-        char []chars;
-        int num = 0;
-        char []M ={'1', '0', 'X', '9','8', '7', '6', '5', '4', '3', '2'};
-        int []power = {7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
-        for (String s : arr) {
-            chars = s.toCharArray();
-            for (int j = 0; j < chars.length - 1; j++) {
-                if (chars[j] > '9' && chars[j] < '0') {
-                    System.out.println(s);
-                    break ;
+            char[] judge = arr[i].toCharArray();
+            int Z = 0;
+            for (int j = 0; j < judge.length-1; j++) {
+                if(judge[j]<'0'&&judge[j]>'9'){
+                    System.out.println(arr[i]);
+                    print = false;
+                    break;
                 }
+                Z += (judge[j]-'0')*value[j];
             }
-            for (int j = 0; j < power.length-1; j++) {
-                num += power[j] * (chars[j]-'0');
+            Z=Z%11;
+            if(judge[17]!=M[Z]){
+                System.out.println(arr[i]);
+                print = false;
             }
-            num = num%11;
-            if(M[num]!=chars[chars.length-1]){
-                System.out.println(s);
-                break;
+
+        }
+        if(print){
+            System.out.println("All passed");
+        }
+
+
+    }
+
+}
+/*import java.util.Scanner;
+
+class Main{
+    public static void main(String[] args)  {
+        Scanner in =new Scanner(System.in);
+        boolean flag=true;
+        int n=in.nextInt();
+        in.nextLine();
+        int[] value=new int[]{7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
+        char[] M=new char[]{'1','0','X','9','8','7','6','5','4','3','2'};
+        for(int i=0;i<n;i++){
+            int sum=0;
+            char b[]=in.nextLine().toCharArray();
+            for(int j=0;j<value.length&&j<b.length;j++){
+                sum+=(b[j]-'0')*value[j];
+            }
+            if(b[17]!=M[sum%11]){
+                System.out.println(b);
+                flag=false;
             }
         }
+        if(flag)
+            System.out.println("All passed");
     }
 }
+*/
