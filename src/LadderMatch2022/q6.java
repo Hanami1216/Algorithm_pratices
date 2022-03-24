@@ -36,8 +36,13 @@ public class q6 {
         }
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[i].length; j++) {
+                if(j == result[i].length-1){
+                    System.out.print(result[i][j]);
+                    break;
+                }
                 System.out.print(result[i][j]+" ");
             }
+
             System.out.println();
         }
 
