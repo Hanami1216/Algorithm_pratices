@@ -11,54 +11,31 @@ import java.util.Scanner;
 public class Question19 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int jia = input.nextInt(), yi = input.nextInt();
-        int[] bei = new int[]{0, 0};
-        int times = input.nextInt();
-        int result = 0;
-        int[][] record = new int[times][4];
-        for (int i = 0; i < times; i++) {
-            //输入数据
+        int A = input.nextInt(), B = input.nextInt();
+        int round = input.nextInt();
+        int count_A = 0, count_B = 0;
+        int[] round_record = new int[4];
+        for (int i = 0; i < round; i++) {
             for (int j = 0; j < 4; j++) {
-                record[i][j] = input.nextInt();
+                round_record[j] = input.nextInt();
             }
-            //判断
-            result = record[i][0] + record[i][2];
-            if (record[i][1] == record[i][3]) {
-                if (result != record[i][1]) {
-                    yi--;
-                    bei[1]++;
-                    if (yi == 0) {
-                        System.out.println("A");
-                        System.out.println(bei[1]);
-                        System.exit(0);
-                    }
-                    jia--;
-                    bei[0]++;
-                    if (jia == 0) {
-                        System.out.println("B");
-                        System.out.println(bei[0]);
-                        System.exit(0);
-                    }
-                }
-                continue;
-            } else if (result == record[i][1]) {
-                yi--;
-                bei[1]++;
-                if (yi == 0) {
-                    System.out.println("A");
-                    System.out.println(bei[1]);
-                    System.exit(0);
-                }
-            } else if (result == record[i][3]) {
-                jia--;
-                bei[0]++;
-                if (jia == 0) {
-                    System.out.println("B");
-                    System.out.println(bei[0]);
-                    System.exit(0);
-                }
+            int result = round_record[0] + round_record[2];
+            if (result == round_record[1] && result != round_record[3]) {
+                count_A++;
+            } else if (result == round_record[3] && result != round_record[1]) {
+                count_B++;
             }
-            result = 0;
+            // 题目保证有一个人倒下。
+            if (count_A > A) {
+                System.out.println("A");
+                System.out.println(count_B);
+                break;
+            } else if (count_B > B) {
+                System.out.println("B");
+                System.out.println(count_A);
+                break;
+            }
         }
+
     }
 }
