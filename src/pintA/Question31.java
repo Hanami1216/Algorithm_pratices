@@ -10,23 +10,14 @@ import java.util.Scanner;
 public class Question31 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int length = input.nextInt();
-        String c = input.next();
-        input.nextLine();
-        char[] str = input.nextLine().toCharArray();
-        if (str.length < length) {
-            for (int i = 0; i < length - str.length; i++) {
-                System.out.print(c);
-            }
-            System.out.print(str);
-        } else if (str.length == length) {
-            for (char value : str) {
-                System.out.print(value);
-            }
-        } else {
-            for (int i = str.length - length; i < str.length; i++) {
-                System.out.print(str[i]);
-            }
+        int N = input.nextInt();
+        for (int i = 0; i < N; i++) {
+            int tall = input.nextInt(), weight = input.nextInt() / 2;
+            if (weight - (tall - 100) * 0.9 < (tall - 100) * 0.9 * 0.1) {
+                System.out.println("You are wan mei!");
+            } else if (weight - (tall - 100) * 0.9 > (tall - 100) * 0.9 * 0.1) {
+                System.out.println("You are tai pang le!");
+            } else System.out.println("You are tai shou le!");
         }
     }
 }
