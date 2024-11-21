@@ -3,7 +3,6 @@ package pintA;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -26,7 +25,9 @@ public class Question20 {
 
             // 如果 k > 1，将这些人加入 friend 集合
             if (k > 1) {
-                friend.addAll(Arrays.asList(ids).subList(1, ids.length));
+                for (int j = 1; j < k; j++) {
+                    friend.add(ids[j]);
+                }
             }
         }
 
